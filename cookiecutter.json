@@ -1,0 +1,8 @@
+{
+  "project_name": "My Python Application",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "author": "Vestcom Data Engineering",
+  "use_spark": ["yes", "no"],
+  "use_hadoop": ["yes", "no"],
+  "dev_mode": ["yes", "no"]
+}

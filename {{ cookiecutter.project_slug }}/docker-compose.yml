@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  sandbox:
+    image: {{ cookiecutter.project_slug }}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    {% if cookiecutter.dev_mode == 'yes' %}
+    command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 main.py "]
+    {% endif %}
+    ports:
+      - 80:80
+      {% if cookiecutter.dev_mode == 'yes' %}
+      - 5678:5678
+      {% endif %}
